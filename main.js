@@ -1,36 +1,33 @@
-// Estoy listo para recibir los putos datos
-
 function calcular() {
-  let resultado;
-  // Variables del usuario.
-  let peso = document.getElementById("peso");
-  let altura = document.getElementById("altura");
-  //Transformar los datos a numero
-  altura = parseFloat(altura.value);
-  peso = parseFloat(peso.value);
+  const pesoInput = document.getElementById("peso");
+  const alturaInput = document.getElementById("altura");
 
-  resultado = peso / Math.pow(altura, 2);
+  const peso = parseFloat(pesoInput.value);
+  const altura = parseFloat(alturaInput.value);
 
-  if (!resultado) {
-    let Elementoresultado = (document.getElementById("result").innerHTML =
-      "Ingresa un valor valido");
-    return 1;
+  // Verificação de valores inválidos
+  if (isNaN(peso) || isNaN(altura) || altura <= 0) {
+    document.getElementById("result").innerHTML = "ingressar um valor válido";
+    return;
   }
 
-  let Elementoresultado=resultado.toFixed(2); // Redondondear a dos digitos.
-  document.getElementById("result").innerHTML = "Tu IMC es " + Elementoresultado;
+  const imc = peso / Math.pow(altura, 2);
+  const imcRedondeado = imc.toFixed(2);
 
-  let imagenCurseada = document.querySelector("img");
-  let miSrc = imagenCurseada.getAttribute("src");
-  if (resultado > 30) {
-    imagenCurseada.setAttribute("src", "img/NosuboGordas.jpg");
-  } else if (resultado > 25 && resultado < 29.99) {
-    imagenCurseada.setAttribute("src", "img/ñoñobig.png");
-  } else if (resultado > 18.5 && resultado < 24.9) {
-    imagenCurseada.setAttribute("src", "img/elchavito.jpg");
-  } else if (resultado < 18.5) {
-    imagenCurseada.setAttribute("src", "img/donRamonconanemia.jpg");
-  } else {
-    imagenCurseada.setAttribute("src", "img/chingaleChabito.jpg");
-  }
+  document.getElementById("result").innerHTML = `Seu IMC é ${imcRedondeado}`;
+
+  const imagen = document.querySelector("img");
+
+  imagen.src = imc >= 30
+  ? "img/ñoñobig.png"
+  : imc >= 25
+    ? "img/gato1.jpg"
+    : imc >= 18.5
+      ? "img/therock.webp"
+      : imc > 2
+        ? "img/donRamonconanemia.jpg"
+        : "img/seumadruga.jpg";
+        imc > 0
+        ? "img/donRamonconanemia.jpg"
+        : "img/gato2.jpg";
 }

@@ -1,75 +1,74 @@
 :root {
   --fuentePrincipal: "Playfair Display", serif;
+
+  /* 🎨 Cores principais */
+  --cor-fundo: #272623;
+  --cor-texto: #ecf0f1;
+  --cor-vermelho: #f91616;
+  --cor-azul: #0000ff;
+
+  /* 🌈 Gradientes */
+  --gradiente-horizontal: linear-gradient(to right, var(--cor-vermelho), var(--cor-azul));
+  --gradiente-botao: linear-gradient(to right, #000000, var(--cor-azul));
+
+  /* ⚫ Sombras */
+  --sombra-padrao: 0px 3px 2px 1px rgb(0, 0, 0);
+  --sombra-caixa: 0px 0px 4px 2px black;
 }
-/* Buenas practicas */
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+  padding: 0;
+  margin: 0;
 }
-/*Para que se le aplique tambien a los pseudoelemetnos
-after y before*/
-* {
-  /*Iniciar todtalmente sin margenes y padding
-  */
-  padding: 0px;
-  margin: 0px;
-}
-/*Establecemos que el html use el modelo de caja
-donde el ancho y el alto de los elementos incluiran el padding y border
 
-Por ejemplo: si pones width: 100px y hay padding: 10px, 
-el contenido se ajusta para que todo el ancho siga siendo 100px (no se suman).
-
-a diferencia del content box que suman el margen y el pádding
-*/
 html {
   box-sizing: border-box;
-  height: 100px;
+  min-height: 100%;
 }
+
 body {
   font-family: monospace;
-  background-color: #272623;
+  background-color: var(--cor-fundo);
   font-size: 62.5%;
+  color: var(--cor-texto);
 }
+
 h1 {
   text-align: center;
   margin: 1rem auto;
-  color: #ecf0f1;
   font-size: 1.8rem;
   max-width: 30rem;
-  width: auto;
   letter-spacing: 2px;
 }
+
 .contenedor {
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-radius: 25px 25px 15px 15px;
   margin: 3rem auto;
   max-width: 500px;
-  width: auto;
-  height: auto;
-  border-left: 5px solid #f91616;
-  border-right: 5px solid rgb(55, 0, 255);
-  border-bottom: linear-gradient(to right, #f91616, blue);
+  border-left: 5px solid var(--cor-vermelho);
+  border-right: 5px solid var(--cor-azul);
+  border-bottom: 5px solid transparent;
+  border-image: var(--gradiente-horizontal) 1;
 }
 
 h3 {
-  border-top: 3px solid linear-gradient(to right, #f91616, blue);
+  border-top: 3px solid transparent;
+  border-image: var(--gradiente-horizontal) 1;
   letter-spacing: 5px;
-  color: #ecf0f1;
   text-transform: uppercase;
   margin-top: 15px;
   text-align: center;
   font-size: 20px;
-  box-shadow: 0px 0px 3px rgb(0, 0, 0);
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
+  box-shadow: var(--sombra-caixa);
+  border-radius: 25px 25px 0 0;
   padding: 1.2rem;
   position: relative;
   overflow: hidden;
 }
+
 h3::after {
   content: "Pruebame!";
   position: absolute;
@@ -79,13 +78,13 @@ h3::after {
   height: 100%;
   background: rgba(128, 128, 128, 0.24);
   transform: skewX(-20deg);
-  transition: left 0.5s;
-  transition: ease-out 5s;
+  transition: left 0.5s ease-out;
 }
+
 h3:hover::after {
-  transition: ease 3s;
   left: 100%;
 }
+
 .personal {
   margin-top: 2rem;
   display: flex;
@@ -93,48 +92,51 @@ h3:hover::after {
   align-items: center;
   gap: 15px;
 }
+
 label {
   width: 70%;
   margin: auto;
-  box-shadow: 0px 3px 1px 1px rgb(0, 0, 0);
+  box-shadow: var(--sombra-padrao);
   padding: 5px;
   font-family: monospace;
-  color: #eee;
   display: block;
   font-size: 18px;
   margin-bottom: 15px;
   text-align: center;
   border-radius: 5px;
 }
+
 input {
   margin-top: 1rem;
   text-align: center;
   width: 14rem;
-  color: white;
+  color: var(--cor-texto);
   border: none;
   background: transparent;
   padding: 10px;
   border-bottom: 1px solid grey;
   max-height: 30px;
 }
-input:invalid {
-    border-bottom: 3px solid red;
 
+input:invalid {
+  border-bottom: 3px solid red;
 }
-input:valid{ 
-    border-bottom: 3px solid green;
+
+input:valid {
+  border-bottom: 3px solid green;
 }
+
 input:focus {
-  border-bottom: unset;
-  border: none;
-  outline: none; /*quitar linea de defecto de inputs*/
+  outline: none;
   border-bottom: 3px solid grey;
 }
+
 input::placeholder {
   text-align: center;
 }
+
 .button_bg {
-  background: linear-gradient(to right, #f91616, blue);
+  background: var(--gradiente-botao);
   margin: 0 auto;
   width: 100%;
   display: flex;
@@ -143,6 +145,7 @@ input::placeholder {
   height: 70px;
   margin-top: 15px;
 }
+
 .boton {
   letter-spacing: 3px;
   width: 50%;
@@ -151,12 +154,14 @@ input::placeholder {
   cursor: pointer;
   font-size: 20px;
   border-radius: 5px;
-  box-shadow: 0px 3px 2px 1px rgb(0, 0, 0);
+  box-shadow: var(--sombra-padrao);
 }
+
 button {
   position: relative;
   overflow: hidden;
 }
+
 button::after {
   content: "";
   position: absolute;
@@ -168,32 +173,34 @@ button::after {
   transform: skewX(-20deg);
   transition: left 0.5s;
 }
+
 button:hover::after {
   left: 100%;
 }
+
 button:focus {
   border: none;
   border-right: 3px solid whitesmoke;
   border-left: 3px solid whitesmoke;
   border-radius: 5px;
 }
+
 button:active {
-  border: medium;
   box-shadow: none;
   margin-top: 5px;
-  /* transform: rotateX('angle'); */
 }
+
 section {
   margin: 2rem auto;
   width: 50%;
   height: 8rem;
   border-radius: 15px;
 }
+
 .are_result h2 {
   margin-top: 20px;
   text-align: center;
   font-size: 1.5rem;
-  color: rgb(239, 239, 239);
   letter-spacing: 2px;
 }
 
@@ -203,38 +210,35 @@ a {
   text-decoration: none;
   margin: 5px auto;
   font-size: 1rem;
-  color: #eee;
-    transition:  transform ease 1s;
-
+  color: var(--cor-texto);
+  transition: transform ease 1s;
 }
+
 a:hover {
   transform: scale(1.2);
-  transition:  transform ease 1s;
   letter-spacing: 5px;
 }
+
 #result {
   font-weight: bold;
   text-align: center;
-  margin: auto;
-  width: auto;
   margin-top: 45px;
   padding: 5px;
-  color: rgb(255, 245, 245);
   font-size: 1.2rem;
 }
+
 .contendor_imagen-resultado {
   width: 13rem;
-  height: auto;
   max-height: 15rem;
   object-fit: contain;
-  /* aspect-ratio: 2; */
 }
+
 img {
   width: 100%;
-  border-radius: 5px;
-
   height: 100%;
+  border-radius: 5px;
 }
+
 .are_result {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -243,65 +247,51 @@ img {
   margin: 1rem auto;
   height: 20rem;
   gap: 10px;
-  box-shadow: 0px 0px 4px 2px black;
+  box-shadow: var(--sombra-caixa);
 }
+
 .resultado {
-  box-shadow: 3px 2px 3px 1px black;
+  box-shadow: var(--sombra-padrao);
   font-family: monospace;
   width: 13rem;
-  height: auto;
 }
+
 .resultado h1 {
   color: black;
   margin-top: 10px;
   letter-spacing: 2px;
 }
+
 .resultado h2 {
-  font-family: monospace;
   font-weight: bold;
   padding: 10px;
-  width: auto;
   margin: 10px auto;
   font-size: 20px;
 }
-/* Investigar nuevas propiedades
-position
-transform: skewX(-20deg);
-transition: left 0.5s;
-top: 0;
-  left: -100%;
-  after
-  hover::after
-*/
+
 .author {
-  background: linear-gradient(to right, red, blue);
+  background: var(--gradiente-horizontal);
   height: 40px;
-  border-bottom-right-radius: 10px;
-  border: medium;
-  border-bottom-left-radius: 10px;
+  border-radius: 0 0 10px 10px;
   padding: 3px;
-  position: relative;
-  overflow: hidden;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 4px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* 📱 Responsividade */
 @media (max-width: 45rem) {
   .result_title {
     text-align: center;
     font-size: 1.5rem;
-    color: rgb(239, 239, 239);
     letter-spacing: 2px;
   }
   .contenedor {
     width: 95%;
     margin: 0 auto;
-    height: 100%;
   }
   .are_result {
     width: 90%;
     grid-template-columns: 1fr;
-    height: 100%;
   }
   .personal {
     display: grid;
@@ -313,18 +303,14 @@ top: 0;
   }
   input {
     padding: 15px;
-
     font-size: 1.4rem;
     margin: 2.5rem auto 3rem 1.3rem;
     width: 90%;
-    height: 25px;
-    border-left: 3px solid red;
-    border-right: 3px solid red;
+    border-left: 3px solid var(--cor-vermelho);
+    border-right: 3px solid var(--cor-vermelho);
   }
   input:focus {
-    outline: none; /*quitar linea de defecto de inputs*/
-
-    border-radius: unset;
+    outline: none;
   }
   input::placeholder {
     letter-spacing: 3px;
@@ -334,12 +320,6 @@ top: 0;
   .resultado {
     box-shadow: unset;
     width: 95%;
-  }
-  .contendor_imagen-resultado {
-    height: auto;
-  }
-  .imagencita {
-    border: none;
   }
   .boton {
     width: 100%;
