@@ -2,18 +2,18 @@
   --fuentePrincipal: "Playfair Display", serif;
 
   /* 🎨 Cores principais */
-  --cor-fundo: #272623;
-  --cor-texto: #ecf0f1;
-  --cor-vermelho: #f91616;
-  --cor-azul: #0000ff;
+  --cor-fundo: #0c0c0cf1;
+  --cor-texto: #f6f6f7;
+  --cor-vermelho: #8c87a181;
+  --cor-azul: #2434c7;
 
   /* 🌈 Gradientes */
   --gradiente-horizontal: linear-gradient(to right, var(--cor-vermelho), var(--cor-azul));
   --gradiente-botao: linear-gradient(to right, #000000, var(--cor-azul));
 
   /* ⚫ Sombras */
-  --sombra-padrao: 0px 3px 2px 1px rgb(0, 0, 0);
-  --sombra-caixa: 0px 0px 4px 2px black;
+  --sombra-padrao: 0px 3px 2px 1px rgb(253, 245, 245);
+  --sombra-caixa: 0px 0px 4px 2px rgb(243, 238, 238);
 }
 
 *,
@@ -119,11 +119,11 @@ input {
 }
 
 input:invalid {
-  border-bottom: 3px solid red;
+  border-bottom: 3px solid rgb(240, 232, 232);
 }
 
 input:valid {
-  border-bottom: 3px solid green;
+  border-bottom: 3px solid rgb(52, 23, 179);
 }
 
 input:focus {
